@@ -10,6 +10,9 @@ expo install @react-navigation/stack @react-navigation/native
 
 expo install react-native-screens react-native-safe-area-context
 
+expo install react-native-gesture-handler
+
+expo install react-native-reanimated
 ```
 
 
