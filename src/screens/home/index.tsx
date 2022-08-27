@@ -1,11 +1,23 @@
 import { 
   View, 
-  Text 
+  Text,
+  Button 
 } from 'react-native';
 
 import styles from './style';
 
+import {
+  useNavigation
+} from '@react-navigation/native';
+
 export default function Home() {
+  const navigation = useNavigation();
+
+  function handleScreen(screen: any) {
+    console.log(typeof screen)
+    console.log(screen)
+    navigation.navigate(screen)
+  }
   return(
     <View
       style={styles.container}
@@ -15,6 +27,19 @@ export default function Home() {
       >
         Home
       </Text>
+
+      <Button
+        title='Home'
+        onPress={() => handleScreen('Home')}
+      />
+      <Button
+        title='Camera'
+        onPress={() => handleScreen('Camera')}
+      />
+      <Button
+        title='Maps'
+        onPress={() => handleScreen('Maps')}
+      />
     </View>
   )
 };
