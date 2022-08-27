@@ -15,5 +15,11 @@ expo install react-native-gesture-handler
 expo install react-native-reanimated
 ```
 
+## Para instalar recursos de camera
+
+```
+expo install expo-camera
+```
+
 
 ### Prof Douglas Morais

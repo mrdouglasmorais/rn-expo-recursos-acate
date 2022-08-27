@@ -14,8 +14,6 @@ export default function Home() {
   const navigation = useNavigation();
 
   function handleScreen(screen: any) {
-    console.log(typeof screen)
-    console.log(screen)
     navigation.navigate(screen)
   }
   return(

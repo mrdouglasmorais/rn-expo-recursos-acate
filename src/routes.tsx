@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/stack'
 
 import Home from './screens/home';
-import Camera from './screens/camera';
+import CameraScreen from './screens/camera';
 import Maps from './screens/maps';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -26,7 +26,7 @@ export default function Routes(){
         />
         <Screen
           name="Camera"
-          component={Camera}
+          component={CameraScreen}
         />
         <Screen
           name="Maps"
