@@ -11,6 +11,11 @@ export default StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 30
+    fontSize: 20
+  },
+  notificationDataContent: {
+    padding: 12,
+    backgroundColor: '#fff84c',
+    borderRadius: 25
   }
 })

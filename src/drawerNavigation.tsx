@@ -9,7 +9,7 @@ import {
 import Home from './screens/home';
 import CameraApp from './screens/camera';
 import MapsApp from './screens/maps';
-import Notifications from './screens/notifications';
+import NotificationsApp from './screens/notifications';
 
 import 'react-native-gesture-handler';
 
@@ -32,7 +32,7 @@ export default function DrawerNavigation() {
         />
         <Drawer.Screen
           name="Notifications"
-          component={Notifications}
+          component={NotificationsApp}
         />
       </ Drawer.Navigator>
     </NavigationContainer>

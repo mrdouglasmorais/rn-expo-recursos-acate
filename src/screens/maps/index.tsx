@@ -16,7 +16,7 @@ import MapView, {
 
 import { 
   ILocalization
-} from '../../../types';
+} from '../../types';
 
 export default function Maps() {
   const [ find, setFind ] = useState<ILocalization>({
