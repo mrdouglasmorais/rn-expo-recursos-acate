@@ -1,7 +1,8 @@
 import { 
   View, 
   Text,
-  Button
+  Button,
+  Platform
 } from 'react-native';
 
 import * as Device from 'expo-device';
@@ -25,13 +26,31 @@ Notifications.setNotificationHandler({
 })
 
 export default function NotificationsApp(){
-  const [ expoToken, setExpoToken ] = useState<string>('');
-  const [ notification, setNotification ] = useState<boolean>(false);
-  const notificationListener = useRef();
-  const resposeListener = useRef();
+  const [ expoToken, setExpoToken ] = useState<string | undefined>('');
+  const [ notification, setNotification ] = useState<any>(false);
+  const notificationListener = useRef<any>();
+  const resposeListener = useRef<any>();
+
+  useEffect(() =>{
+    registerForPushNotificationsAsync().then( token => setExpoToken(token));
+
+    notificationListener.current = Notifications.addNotificationReceivedListener(
+      notification => {
+        setNotification(notification)
+      }
+    )
+
+    resposeListener.current = Notifications.addNotificationResponseReceivedListener(
+      response => console.log(response)
+    )
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(resposeListener.current)
+    }
+  })
 
 
-  useEffect(() => console.log('Notifications'))
   return (
     <View
       style={styles.container}
@@ -56,8 +75,52 @@ export default function NotificationsApp(){
       </View>
       <Button
         title="Notifications"
-        onPress={ () => alert("Notifications")}
+        onPress={ async () => {
+          await schedulePushNotification();
+        }}
       />
     </View>
   )
+}
+
+async function schedulePushNotification(){
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Olá Acate",
+      body: 'Eu sou uma notificação',
+      data: { data: 'Qualquer coisa'}
+    },
+    trigger: { seconds: 2 }
+  })
+};
+
+async function registerForPushNotificationsAsync(){
+  let token;
+  if(Device.isDevice){
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+    if(existingStatus !== 'granted'){
+      const { status} = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if(existingStatus === 'granted'){
+      return
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log('token da notificacão', token);
+    console.log('status do dispositivo', finalStatus);
+  } else {
+    alert('Use um dispositivo fisico para visualizar')
+  }
+
+  if(Platform.OS === 'android'){
+    await Notifications.setNotificationChannelAsync('default' , {
+      name: 'default',
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: '#FF231F7C'
+    })
+  }
+
+  return token;
 }
