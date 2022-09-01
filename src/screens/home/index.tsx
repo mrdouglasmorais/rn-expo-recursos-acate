@@ -38,6 +38,10 @@ export default function Home() {
         title='Maps'
         onPress={() => handleScreen('Maps')}
       />
+      <Button
+        title='Notifications'
+        onPress={() => handleScreen('Notifications')}
+      />
     </View>
   )
 };

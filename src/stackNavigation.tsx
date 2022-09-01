@@ -8,7 +8,7 @@ import {
 
 import Home from './screens/home';
 import CameraScreen from './screens/camera';
-import Maps from './screens/maps';
+import Maps from './screens/home/maps';
 
 const { Navigator, Screen } = createStackNavigator();
 

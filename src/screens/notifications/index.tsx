@@ -1,20 +1,20 @@
 import { 
   View, 
-  Text 
+  Text
 } from 'react-native';
 
 import styles from './style';
 
-export default function Maps() {
-  return(
+export default function Notifications(){
+  return (
     <View
       style={styles.container}
     >
       <Text
         style={styles.text}
       >
-        Maps
+        Notifications
       </Text>
     </View>
   )
-};
+}

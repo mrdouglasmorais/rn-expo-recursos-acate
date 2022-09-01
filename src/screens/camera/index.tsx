@@ -15,6 +15,10 @@ import {
   CameraType 
 } from 'expo-camera';
 
+import {
+  MaterialIcons
+} from '@expo/vector-icons';
+
 import styles from './style';
 
 export default function CameraScreen() {
@@ -64,11 +68,7 @@ export default function CameraScreen() {
               setType( type === CameraType.back ?  CameraType.front : CameraType.back );
             }}
           >
-            <Text
-              style={styles.buttonText}
-            >
-              Mudar camera
-            </Text>
+            <MaterialIcons name="camera" color="#ACC91B" size={100}/>
           </TouchableOpacity>
         </View>
       </Camera>

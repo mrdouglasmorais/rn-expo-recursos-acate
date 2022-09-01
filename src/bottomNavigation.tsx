@@ -12,7 +12,7 @@ import {
 
 import Home from './screens/home';
 import CameraApp from './screens/camera';
-import MapsApp from './screens/maps';
+import MapsApp from './screens/home/maps';
 
 export default function BottomNavigation(){
   const Tab = createBottomTabNavigator();
