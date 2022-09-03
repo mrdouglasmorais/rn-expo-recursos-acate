@@ -16,6 +16,7 @@ import {
 
 import styles from './style';
 
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     handleShowAlert: true,

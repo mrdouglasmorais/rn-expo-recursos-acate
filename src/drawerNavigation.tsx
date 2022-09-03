@@ -6,10 +6,10 @@ import {
   createDrawerNavigator
 } from '@react-navigation/drawer';
 
-import Home from './screens/home';
-import CameraApp from './screens/camera';
-import MapsApp from './screens/maps';
-import NotificationsApp from './screens/notifications';
+import Home from 'src/screens/home';
+import CameraApp from 'src/screens/camera';
+import MapsApp from 'src/screens/maps';
+import NotificationsApp from 'src/screens/notifications';
 
 import 'react-native-gesture-handler';
 
