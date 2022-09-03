@@ -19,9 +19,9 @@ import styles from './style';
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     handleShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-    shouldShowAlert: false
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+    shouldShowAlert: true
   })
 })
 
@@ -88,9 +88,11 @@ async function schedulePushNotification(){
     content: {
       title: "Olá Acate",
       body: 'Eu sou uma notificação',
-      data: { data: 'Qualquer coisa'}
+      sound: '../../assets/notifications.wav',
+      data: { data: 'Qualquer coisa'},
+      vibrate: [0, 250, 250, 250],
     },
-    trigger: { seconds: 2 }
+    trigger: { seconds: 5 }
   })
 };
 
