@@ -8,6 +8,8 @@ import {
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 
+import { INotification } from 'src/types';
+
 import {
   useState,
   useEffect,
@@ -51,7 +53,11 @@ export default function NotificationsApp(){
     }
   })
 
+  const DateConvert = (value: number) => {
+    return new Date(value)
+  }
 
+  console.log(notification);
   return (
     <View
       style={styles.container}
@@ -65,13 +71,13 @@ export default function NotificationsApp(){
         style={styles.notificationDataContent}
       >
         <Text>
-          Title:  
+          Title: { notification && notification?.request.content.title }
         </Text>
         <Text>
-          Body: 
+          Body: { notification && notification?.request.content.body }
         </Text>
         <Text>
-          Data: 
+          Date: { notification && notification?.date }
         </Text>
       </View>
       <Button
@@ -121,7 +127,7 @@ async function registerForPushNotificationsAsync(){
       name: 'default',
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C'
+      lightColor: '#FF231F7C',
     })
   }
 
