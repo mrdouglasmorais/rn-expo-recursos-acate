@@ -11,6 +11,7 @@ import CameraApp from 'src/screens/camera';
 import MapsApp from 'src/screens/maps';
 import NotificationsApp from 'src/screens/notifications';
 import SlideAnimation from 'src/screens/slideAnimation';
+import SlideHorizontalAnimation from 'src/screens/slideHorizontalAnimation';
 
 import 'react-native-gesture-handler';
 
@@ -38,6 +39,10 @@ export default function DrawerNavigation() {
         <Drawer.Screen
           name="Slide Animation"
           component={SlideAnimation}
+        />
+        <Drawer.Screen
+          name="Slide Horizontal Animation"
+          component={SlideHorizontalAnimation}
         />
       </ Drawer.Navigator>
     </NavigationContainer>
