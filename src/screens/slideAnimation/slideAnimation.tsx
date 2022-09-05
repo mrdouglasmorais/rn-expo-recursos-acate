@@ -1,16 +1,6 @@
-// import {
-//   View,
-//   Text,
-//   StyleSheet
-// } from 'react-native';
-
 import {
   StatusBar
 } from 'expo-status-bar';
-
-// import {
-//   ScrollView
-// } from 'react-native-gesture-handler';
 
 import Animated, { 
   useSharedValue,
@@ -35,7 +25,7 @@ export default function SlideAnimation() {
       <StatusBar hidden />
       <Animated.ScrollView
         style={{ backgroundColor: '#000'}}
-        contentContainerStyle={{ height: (itens.length + 1) * MAX_HEIGHT }}
+        contentContainerStyle={{ height: (itens.length + 0.25) * MAX_HEIGHT }}
         scrollEventThrottle={16}
         onScroll={onScroll}
         decelerationRate='normal'
@@ -47,10 +37,3 @@ export default function SlideAnimation() {
     </>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     height: itens.length * MAX_HEIGHT,
-//     backgroundColor: '#000',
-//   }
-// })
