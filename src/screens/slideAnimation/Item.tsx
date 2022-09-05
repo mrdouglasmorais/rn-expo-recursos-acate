@@ -3,6 +3,7 @@ import {
   Text,
   Image,
   Dimensions,
+  StyleSheet,
   Alert
 } from 'react-native';
 
@@ -30,19 +31,52 @@ interface ItemProps {
 }
 
 const Item = ({ y, index, item: { title, subtitle, picture } }: ItemProps) => {
-  
+  const container = useAnimatedStyle( () => ({
+    height: interpolate(
+      y.value,
+      [(index - 1) * MAX_HEIGHT, index * MAX_HEIGHT],
+      [MIN_HEIGHT, MAX_HEIGHT],
+      Extrapolate.CLAMP
+    )
+  }))
+
+  const titleStyle = useAnimatedStyle( () => ({
+    opacity: interpolate(
+      y.value,
+      [(index - 1) * MAX_HEIGHT, index * MAX_HEIGHT],
+      [0, 1],
+      Extrapolate.CLAMP
+    )
+  }))
   
   return(
-    <TouchableWithoutFeedback onPress={ () => Alert.alert('Pressionado')}>
-      <Animated.View>
+    <TouchableWithoutFeedback onPress={ () => Alert.alert(title)}>
+      <Animated.View
+        style={[styles.container, container]}
+      >
         <Image
           source={picture}
+          style={styles.picture}
         />
-        <View>
-          <Text>{subtitle.toUpperCase()}</Text>
-          <Animated.View>
-            <Text>{title.toUpperCase()}</Text>
-          </Animated.View>
+        <View
+          style={styles.titleContainer}
+        >
+          <Text
+            style={styles.subtitle}
+          >{subtitle.toUpperCase()}</Text>
+          <View
+            style={styles.mainTitle}
+          >
+            <Animated.View
+              style={titleStyle}
+            >
+              <Text
+                style={styles.title}
+              >
+                {title.toUpperCase()}
+              </Text>
+            </Animated.View>
+          </View>
         </View>
       </Animated.View>
     </TouchableWithoutFeedback>
@@ -50,3 +84,44 @@ const Item = ({ y, index, item: { title, subtitle, picture } }: ItemProps) => {
 }
 
 export default Item
+
+const { width, height } = Dimensions.get('window');
+export const MIN_HEIGHT = 128;
+export const MAX_HEIGHT = height * 0.7;
+
+
+const styles = StyleSheet.create({
+  container: {
+    width,
+    height: MAX_HEIGHT,
+    justifyContent: 'flex-end',
+  },
+  picture: {
+    ...StyleSheet.absoluteFillObject,
+    width: undefined,
+    height: undefined,
+  },
+  title: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 32,
+    fontWeight: 'bold'
+  },
+  titleContainer: {
+    maxHeight: MAX_HEIGHT * 0.61,
+    justifyContent: 'center',
+    flex: 1
+  },
+  mainTitle: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    padding: 32,
+    transform: [{ translateY: 64 }]
+  },
+  subtitle: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+})

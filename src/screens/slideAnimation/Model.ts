@@ -20,7 +20,7 @@ export const itens = [
   {
     title: 'Obi-Wan Kenobi',
     subtitle: "Master Jedi",
-    picture: require('./assets/kyle.jpeg'),
+    picture: require('./assets/obiwan.jpeg'),
     top: 0
   },
 ]
