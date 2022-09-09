@@ -11,19 +11,19 @@ const { width } = Dimensions.get('window');
 export const cards = [
   {
     picture: require('../assets/cards/a.jpeg'),
-    caption: 'Um monte de comida e eu com fome :('
+    caption: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
   },
   {
     picture: require('../assets/cards/b.jpg'),
-    caption: 'Um monte de comida e eu com fome :('
+    caption: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
   },
   {
     picture: require('../assets/cards/c.jpeg'),
-    caption: 'Um monte de comida e eu com fome :('
+    caption: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
   },
   {
     picture: require('../assets/cards/d.jpeg'),
-    caption: 'Um monte de comida e eu com fome :('
+    caption: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
   }
 ]
 
@@ -36,7 +36,7 @@ const Card = ({ picture, caption }: CardProps) => {
   return (
     <>
       <View style={styles.container}>
-        <Image source={picture}  style={styles.image}/>
+        <Image source={picture} style={styles.image} />
       </View>
       <View style={styles.caption}>
         <Text style={styles.text}>{caption}</Text>

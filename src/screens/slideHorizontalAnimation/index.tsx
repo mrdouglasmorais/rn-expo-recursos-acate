@@ -1,74 +1,67 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet, 
-  Dimensions
-} from 'react-native';
-
+import React from "react";
+import { Dimensions, View, ScrollView, StyleSheet } from "react-native";
 import Animated, {
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
   useSharedValue,
   interpolateColor,
-  useAnimatedStyle,
-  useAnimatedScrollHandler
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import Products from './Products'
-import Card, {
-  CARD_HEIGHT
-} from './Card';
-import Cards from './components/Cards';
+import { products } from "./Model";
+import Card, { CARD_HEIGHT } from "./Card";
+import Products from "./Products";
+import Cards from "./components/Cards";
 
-import { products } from './Model';
+const { width } = Dimensions.get("window");
 
-const { width } = Dimensions.get('window');
+const styles = StyleSheet.create({
+  slider: { height: CARD_HEIGHT },
+});
+const snapToOffsets = [0, CARD_HEIGHT];
 
-const snapToOffset = [0, CARD_HEIGHT]
-
-const SlideHorizontalAnimation = () => {
+const PhilzCoffee = () => {
   const translateX = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
     onScroll: (event) => {
-      translateX.value = event.contentOffset.x
-    }
-  })
+      translateX.value = event.contentOffset.x;
+    },
+  });
   const style = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       translateX.value,
       products.map((_, i) => width * i),
       products.map((product) => product.color2)
     ) as string;
-    return { flex: 1, backgroundColor}
-  })
-  return(
+    return { flex: 1, backgroundColor };
+  });
+  return (
     <Animated.View style={style}>
       <ScrollView
-        onScroll={onScroll}
+        bounces={false}
         showsVerticalScrollIndicator={false}
-        snapToOffsets={snapToOffset}
+        snapToOffsets={snapToOffsets}
         snapToEnd={false}
         decelerationRate="fast"
       >
         <View style={styles.slider}>
-          <>
-            { products.map((product, index) => (
+          <Animated.ScrollView
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+            decelerationRate="fast"
+            snapToInterval={width}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          >
+            {products.map((product, index) => (
               <Card product={product} key={index} />
             ))}
-          </>
+          </Animated.ScrollView>
+          <Products x={translateX} />
         </View>
-      </ScrollView>
-      <Products x={translateX} />
-      <ScrollView>
         <Cards />
       </ScrollView>
     </Animated.View>
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create({
-  slider: {
-    height: CARD_HEIGHT
-  }
-})
-
-export default SlideHorizontalAnimation;
+export default PhilzCoffee;
