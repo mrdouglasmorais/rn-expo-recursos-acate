@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import Button from './components/Button';
+import CardHeaders from './components/CardHeaders';
 
 import { IProduct } from './Model';
 
@@ -19,7 +20,16 @@ export const CARD_HEIGHT = width * 1.25
 const Card = ({ product: { color1, title, subtitle}}: ICardProps) => {
   return(
     <View style={styles.container}>
-      <View>
+      <View
+        style={{
+          borderRadius: 16,
+          margin: 32,
+          flex: 1,
+          backgroundColor: color1,
+          padding: 16,
+          justifyContent: 'space-between'
+        }}
+      >
         <View>
           <Text
             style={styles.title}
@@ -32,7 +42,7 @@ const Card = ({ product: { color1, title, subtitle}}: ICardProps) => {
             {subtitle} 
           </Text>
         </View>
-        <Button label="Clique me"/>
+        <Button label="Saiba Mais"/>
       </View>
     </View>
   )

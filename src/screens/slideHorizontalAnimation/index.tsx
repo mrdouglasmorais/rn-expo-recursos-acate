@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   ScrollView,
   StyleSheet, 
   Dimensions
@@ -43,22 +42,27 @@ const SlideHorizontalAnimation = () => {
   return(
     <Animated.View style={style}>
       <ScrollView
-        onScroll={onScroll}
+        bounces={false}
         showsVerticalScrollIndicator={false}
         snapToOffsets={snapToOffset}
         snapToEnd={false}
         decelerationRate="fast"
       >
         <View style={styles.slider}>
-          <>
+          <Animated.ScrollView
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+            decelerationRate="fast"
+            snapToInterval={width}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          >
             { products.map((product, index) => (
               <Card product={product} key={index} />
             ))}
-          </>
+          </Animated.ScrollView>
+          <Products x={translateX} />
         </View>
-      </ScrollView>
-      <Products x={translateX} />
-      <ScrollView>
         <Cards />
       </ScrollView>
     </Animated.View>

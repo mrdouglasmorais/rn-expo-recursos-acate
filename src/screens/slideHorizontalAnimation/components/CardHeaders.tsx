@@ -13,9 +13,9 @@ const CardHeader = () => {
     <View
       style={styles.container}
     >
-      <View>
-        <Text>RECOMENDADO</Text>
-        <View>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title}>RECOMENDADO</Text>
+        <View style={styles.action}>
           <Icon name="edit" size={16} />
         </View>
       </View>
@@ -24,9 +24,21 @@ const CardHeader = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  title: {},
-  action: {},
+  container: {
+    flexDirection: 'row',
+    padding: 16,
+    marginBottom: 16,
+    alignItems: 'center'
+  },
+  title: {
+    alignSelf: 'center',
+  },
+  action: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignSelf: 'center',
+  },
 })
 
 export default CardHeader;

@@ -9,6 +9,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle
 } from 'react-native-reanimated';
+import style from '../home/style';
 
 import { products } from './Model';
 
@@ -17,11 +18,21 @@ interface IProductProps {
 }
 
 const { width } = Dimensions.get('window');
-const SIZE = 100;
+const SIZE = 200;
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
 
 const Products = ({x}: IProductProps) => {
   return(
-    <View>
+    <View 
+      style={styles.container} 
+      pointerEvents="none"
+    >
       { products.map((product, index) => {
         const style = useAnimatedStyle( () => {
           const translateX = interpolate(
@@ -58,12 +69,5 @@ const Products = ({x}: IProductProps) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
 
 export default Products;
