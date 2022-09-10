@@ -7,7 +7,10 @@ import {
   SafeAreaView
 } from 'react-native-safe-area-context';
 
+import {} from './Config';
 import Tile from './Tile';
+
+import SortableList from './SortableList';
 
 const tiles = [
   {
@@ -45,11 +48,19 @@ const tiles = [
 ]
 
 const DragItems = () => {
+  console.log('itens', tiles.length)
   return(
     <SafeAreaView>
-      <View>
-        <Text>Drag Items</Text>
-      </View>
+      <SortableList>
+          {[...tiles, ...tiles].map((tile, index) => (
+            <Tile 
+              onLongPress={ () => true }
+              key={tile.id + "-" + index}
+              id={ tile.id + "-" + index }
+              uri={tile.uri} 
+            />
+          ))}
+      </SortableList>
     </SafeAreaView>
   )
 }
