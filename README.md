@@ -21,5 +21,7 @@ expo install react-native-reanimated
 expo install expo-camera
 ```
 
+#### Contém animações avançadas.
+
 
 ### Prof Douglas Morais
