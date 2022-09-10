@@ -54,6 +54,10 @@ export default function Home() {
         title='Drag Effects'
         onPress={() => handleScreen('Drag Effects')}
       />
+      <Button
+        title='Breathe Effects'
+        onPress={() => handleScreen('Breathe Effects')}
+      />
     </View>
   )
 };
