@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 
 import Animated, {
-  scrollTo,
   useAnimatedGestureHandler,
   useAnimatedReaction,
   useAnimatedStyle,
